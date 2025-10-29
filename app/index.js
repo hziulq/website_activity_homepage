@@ -26,7 +26,10 @@ app.get('/', async (req, res) => {
 
 app.get('/top', async (req, res) => {
     try {
-        res.render("top.ejs", { activity: process.env.ACTIVITY });
+        res.render("top.ejs", {
+            activity: process.env.ACTIVITY,
+            currentPage: 'top'
+         });
     }
     catch (err) {
         res.status(500).send('Server Error');
@@ -36,7 +39,24 @@ app.get('/top', async (req, res) => {
 
 app.get('/about', async (req, res) => {
     try {
-        res.render("about.ejs", { activity: process.env.ACTIVITY });
+        res.render("about.ejs", { 
+            activity: process.env.ACTIVITY ,
+            currentPage: 'about',
+        });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
+
+
+app.get('/news', async (req, res) => {
+    try {
+        res.render("news.ejs",{ 
+            activity: process.env.ACTIVITY,
+            currentPage: 'news',
+        });
     }
     catch (err) {
         res.status(500).send('Server Error');
@@ -46,13 +66,17 @@ app.get('/about', async (req, res) => {
 
 app.get('/contact', async (req, res) => {
     try {
-        res.render("contact.ejs",{ activity: process.env.ACTIVITY });
+        res.render("contact.ejs",{ 
+            activity: process.env.ACTIVITY,
+            currentPage: 'contact',
+        });
     }
     catch (err) {
         res.status(500).send('Server Error');
         console.log(err.message);
     }
 })
+
 
 
 
@@ -70,7 +94,7 @@ app.get('/contact', async (req, res) => {
 
 app.use(async (req, res) => {
     try {
-        res.render("contact.ejs",{ activity: process.env.ACTIVITY });
+        res.render("error_404.ejs",{ activity: process.env.ACTIVITY });
     }
     catch (err) {
         res.status(500).send('Server Error');

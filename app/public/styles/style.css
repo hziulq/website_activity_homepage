@@ -11,7 +11,7 @@
 
 #container {
     /* width: 66%; 横幅を80%に設定し、左右のパディング分を加算 */
-    width: calc(768px - 76px + 10%); /* 20pxのパディングを両側に加算 */
+    width: 768px;
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
@@ -26,6 +26,11 @@
     text-align: center;
 }
 
+.currentPage {
+    background-color: #3b7b46; /* 少し明るい緑色 */
+    color: #ffcc00; /* 黄色の文字 */
+}
+
 /* 親要素（<ul>）に対する設定 */
 #navi {
   /* リスト項目を横並びにする */
@@ -33,6 +38,8 @@
   
   /* デフォルトのリストマーカー（・）を非表示にする */
   list-style: none;
+  /* リスト項目を中央寄せにする */
+  justify-content: center;
   
   /* デフォルトのパディングやマージンをリセット */
   padding: 0;
@@ -60,12 +67,16 @@
   font-weight: bold;
 }
 
-/* 選択されている項目（例: TOP）のスタイル */
-#navi li.active {
+#navi li:hover {
     background-color: #3b7b46; /* 少し明るい緑色 */
 }
 
-#navi li.active a {
+/* 選択されている項目（例: TOP）のスタイル */
+#navi li:active {
+    background-color: #3b7b46; /* 少し明るい緑色 */
+}
+
+#navi li:active a {
     color: #ffcc00; /* 黄色の文字 */
 }
 
@@ -90,7 +101,7 @@
     }
     
     
-    ul {
+    #navi {
         /* 横並びから縦並びに変更 */
         flex-direction: column;
         
@@ -98,17 +109,18 @@
         width: 100%;
     }
 
-    li {
+    #navi li {
         /* 各項目が画面いっぱいの幅になるようにする */
         width: 100%;
         /* 縦並びではマージンをリセットまたは調整 */
         margin: 0;
     }
     
-    li a {
+    #navi li a {
         /* 縦並びになったので、パディングを少し調整 */
         padding: 10px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 区切り線を追加 (オプション) */
+        text-align: center;
     }
 }
 
