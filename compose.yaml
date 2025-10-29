@@ -1,28 +1,33 @@
 services:
-  # web:
-  #  image: nginx:latest
-  #  ports:
-  #    - "80:80"
-  #  volumes:
-  #    - ./html:/usr/share/nginx/html
-  #  depends_on:
-  #    - app
-  # 多分これを触ってたら間に合わないな、、、
 
   app:
-    build: .
+    build: ./app/
     image: node:lts-bookworm
     ports:
       - "3000:3000"
+    volumes:
+      - ./app:/usr/src/app
+    working_dir: /usr/src/app
+    depends_on:
+      - apidb
+    stdin_open: true
+    tty: true
+    command: ["/bin/bash", "-c", "npm install && npm run start"] # && /bin/bash"]   && nodemon index.js"]
+
+  apidb:
+    build: ./apidb/
+    image: node:lts-bookworm
     environment:
       - DATABASE_URL=${DATABASE_URL}
     volumes:
-      - ./app:/usr/src/app
+      - ./apidb:/usr/src/apidb
+    working_dir: /usr/src/apidb
     depends_on:
       - db
-    # stdin_open: true
-    # tty: true
-    command: ["/bin/bash", "-c", "npm install && npm run start"] # && /bin/bash"]   && nodemon index.js"]
+    stdin_open: true
+    tty: true
+    command: ["/bin/bash" , "-c", "npm install && npm run start"] # && /bin/bash"]   && nodemon index.js"]
+
 
   db:
     image: postgres:18.0-bookworm

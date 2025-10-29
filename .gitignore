@@ -1,7 +1,9 @@
-
-app/node_modules/
 .env
+app/node_modules/
 app/.env
+apidb/node_modules/
+apidb/.env
+
 
 # Logs
 logs
