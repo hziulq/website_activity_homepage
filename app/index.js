@@ -12,6 +12,8 @@ const sql_api = process.env.SQL_API;
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
+app.set('view engine', 'ejs');
+
 app.get('/', async (req, res) => {
     try {
         res.render("index.ejs", { activity: process.env.ACTIVITY });
@@ -32,6 +34,7 @@ app.get('/contact', async (req, res) => {
         console.log(err.message);
     }
 })
+
 
 
 
