@@ -1,0 +1,11 @@
+<%- include('partial/header.ejs') %>
+
+<h2>お問い合わせはこちらからどうぞ</h2>
+
+<form action="/submit" method="POST">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <button type="submit">Submit</button>
+</form>
+
+<%- include('partial/footer.ejs') %>

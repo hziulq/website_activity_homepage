@@ -1,0 +1,36 @@
+services:
+  # web:
+  #  image: nginx:latest
+  #  ports:
+  #    - "80:80"
+  #  volumes:
+  #    - ./html:/usr/share/nginx/html
+  #  depends_on:
+  #    - app
+  # 多分これを触ってたら間に合わないな、、、
+
+  app:
+    build: .
+    image: node:lts-bookworm
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - ./app:/usr/src/app
+    depends_on:
+      - db
+    # stdin_open: true
+    # tty: true
+    command: ["/bin/bash", "-c", "npm install && npm run start"] # && /bin/bash"]   && nodemon index.js"]
+
+  db:
+    image: postgres:18.0-bookworm
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql
+volumes:
+  pgdata:
