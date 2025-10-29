@@ -1,2 +1,2 @@
 # website_activity_homepage
-my website
+ちゃんとウェブサイトを作ろうとするのは初めてだよ
