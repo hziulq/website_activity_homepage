@@ -1,6 +1,6 @@
 app/node_modules/
 .env
-
+app/.env
 
 # .gitignore　の内容をAIに書かせたらいっぱい出てきた。
 #　全然知らん。
