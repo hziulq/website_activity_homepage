@@ -1,0 +1,117 @@
+#container_background {
+    /* background-color: #e6ffe6; 薄い緑色の背景 */
+    background-image: url('./../images/container.png');
+    padding: 20px 0; /* 上下に余白を追加 */
+    position: absolute;
+    background-attachment: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#container {
+    /* width: 66%; 横幅を80%に設定し、左右のパディング分を加算 */
+    width: calc(768px - 76px + 10%); /* 20pxのパディングを両側に加算 */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    color: #333;
+    background-color: white;
+    font-family: Arial, sans-serif;
+}
+
+#header{
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 親要素（<ul>）に対する設定 */
+#navi {
+  /* リスト項目を横並びにする */
+  display: flex;
+  
+  /* デフォルトのリストマーカー（・）を非表示にする */
+  list-style: none;
+  
+  /* デフォルトのパディングやマージンをリセット */
+  padding: 0;
+  margin: 0;
+  
+  /* 背景色や高さを設定して、画像のようなバーにする */
+  background-color: #0d4f18; /* 例として濃い緑色 */
+}
+
+/* 子要素（<li>）に対する設定 */
+#navi li {
+  /* 要素間に少しスペースを空ける（オプション） */
+  margin: 0 10px;
+}
+
+/* リンク（<a>）に対する設定 */
+#navi li a {
+  /* リンク全体をクリックできるようにする */
+  display: block; 
+  
+  /* 文字色、フォント、パディングを設定 */
+  color: white;
+  text-decoration: none; /* デフォルトの下線を消す */
+  padding: 15px 20px; /* 上下左右の余白 */
+  font-weight: bold;
+}
+
+/* 選択されている項目（例: TOP）のスタイル */
+#navi li.active {
+    background-color: #3b7b46; /* 少し明るい緑色 */
+}
+
+#navi li.active a {
+    color: #ffcc00; /* 黄色の文字 */
+}
+
+
+
+
+@media screen and (max-width: 1023px) {
+
+}
+
+/* 画面幅が768px以下の場合に適用されるCSS */
+@media screen and (max-width: 768px) {
+
+    #container_baskground {
+        /* 幅を画面幅に合わせて調整 */
+        width: 100%;
+    }
+
+    #container {
+        /* 幅を画面幅に合わせて調整 */
+        width: 100%;
+    }
+    
+    
+    ul {
+        /* 横並びから縦並びに変更 */
+        flex-direction: column;
+        
+        /* 縦並びになったときに画面全体を使うようにする */
+        width: 100%;
+    }
+
+    li {
+        /* 各項目が画面いっぱいの幅になるようにする */
+        width: 100%;
+        /* 縦並びではマージンをリセットまたは調整 */
+        margin: 0;
+    }
+    
+    li a {
+        /* 縦並びになったので、パディングを少し調整 */
+        padding: 10px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 区切り線を追加 (オプション) */
+    }
+}
+
+@media screen and (max-width: 479px) {
+
+}

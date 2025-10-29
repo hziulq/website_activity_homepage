@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
     try {
-        res.render("index.ejs", { activity: process.env.ACTIVITY });
+        res.redirect("/top");
     }
     catch (err) {
         res.status(500).send('Server Error');
@@ -24,10 +24,29 @@ app.get('/', async (req, res) => {
     }
 })
 
+app.get('/top', async (req, res) => {
+    try {
+        res.render("top.ejs", { activity: process.env.ACTIVITY });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
+
+app.get('/about', async (req, res) => {
+    try {
+        res.render("about.ejs", { activity: process.env.ACTIVITY });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
 
 app.get('/contact', async (req, res) => {
     try {
-        res.render("contact.ejs");
+        res.render("contact.ejs",{ activity: process.env.ACTIVITY });
     }
     catch (err) {
         res.status(500).send('Server Error');
@@ -48,6 +67,16 @@ app.get('/contact', async (req, res) => {
 //         console.log(err.message);
 //     }
 // });
+
+app.use(async (req, res) => {
+    try {
+        res.render("contact.ejs",{ activity: process.env.ACTIVITY });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
 
 app.listen(port, (err) => {
     if (err) {
