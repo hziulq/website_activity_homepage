@@ -1,86 +1,227 @@
-#container_background {
-    /* background-color: #e6ffe6; 薄い緑色の背景 */
-    background-image: url('./../images/container.png');
-    padding: 20px 0; /* 上下に余白を追加 */
-    position: absolute;
-    background-attachment: fixed;
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.font-small {
+    font-size: small;
+}
+
+.shadow {
+    box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.3);
+}
+
+ul {
+    list-style: none;
+}
+
+/* 全ての要素をラップするコンポーネント */
+.main {
     width: 100%;
+    position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    background-image: url("/images/background1.png");
+    /* background-repeat: repeat; */
+    background-attachment: fixed;
+    background-size: cover; 
+    background-position: center center;
+    /* 背景画像の繰り返しを防ぐ（coverを使っているため必須ではないが、念のため） */
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
-#container {
-    /* width: 66%; 横幅を80%に設定し、左右のパディング分を加算 */
+/* アクティビティの名前が入る場所。一番上に配置される */
+.header {
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    text-align: center;
+    padding: 0px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.header > h1 {
+    padding: 0px 0;
+    margin: 0;
+}
+
+.top-image-wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(50, 50, 50, 1);
+}
+
+.top-image {
+    width: 768px;
+}
+
+/* 縦長のコンテンツを作るためのコンテナ */
+.container {
+    /* border-color: rgba(0, 0, 0, 1);
+    border : solid 1px; */
     width: 768px;
     margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
-    color: #333;
-    background-color: white;
-    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
-#header{
-    background-color: #f2f2f2;
-    padding: 20px;
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ナビゲーションメニュー。主に色味調整 */
+.section-title,
+.nav-wrapper {
+    background: 
+        linear-gradient(to bottom, 
+            /* 濃い緑 */
+            rgba(0, 0, 0, 0.1) 30%, 
+            /* 濃い緑から黄色へ変化し始める点 */
+            rgba(0, 0, 0, 0.3) 60%, 
+            /* 明るい黄色 */
+            rgba(0, 0, 0, 0.5) 100% 
+        ),
+        #84eb6a;
+}
+
+.nav-wrapper {
+    margin: auto auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* ナビゲーションバーの配置調整 */
+.nav {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    width: 768px;
+    margin: auto 0 ;
+    padding:0;
+}
+
+.nav-wrapper {
+    width:100%
+}
+
+/* ナビゲーションメニューの各項目 */
+.nav li {
+    width: calc(100% / 6);
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+    flex-grow: 1;
+}
+
+/* 一番左だけちょっと調整 */
+.nav li:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 文字の調整 */
+.nav a {
+    display: block;
+    padding: 10px 0;
     text-align: center;
+    text-decoration: none;
+    
+    color: rgba(0, 0, 0, 0.6);
+    font-family: "Geologica";
+    font-weight: 900;
 }
 
 .currentPage {
-    background-color: #3b7b46; /* 少し明るい緑色 */
-    color: #ffcc00; /* 黄色の文字 */
+    background: 
+        linear-gradient(to bottom, 
+            /* 濃い緑 */
+            rgba(0, 0, 0, 0.1) 30%, 
+            /* 濃い緑から黄色へ変化し始める点 */
+            rgba(0, 0, 0, 0.3) 60%, 
+            /* 明るい黄色 */
+            rgba(0, 0, 0, 0.5) 100% 
+        ),
+        rgba(255,255,0,1);
 }
 
-/* 親要素（<ul>）に対する設定 */
-#navi {
-  /* リスト項目を横並びにする */
-  display: flex;
-  
-  /* デフォルトのリストマーカー（・）を非表示にする */
-  list-style: none;
-  /* リスト項目を中央寄せにする */
-  justify-content: center;
-  
-  /* デフォルトのパディングやマージンをリセット */
-  padding: 0;
-  margin: 0;
-  
-  /* 背景色や高さを設定して、画像のようなバーにする */
-  background-color: #0d4f18; /* 例として濃い緑色 */
+a.currentPage {
+    color: rgba(0, 0, 0, 1);
 }
 
-/* 子要素（<li>）に対する設定 */
-#navi li {
-  /* 要素間に少しスペースを空ける（オプション） */
-  margin: 0 10px;
+/* 全コンテンツの設定 */
+.contents-wrapper * {
+    padding: 5px;
+    margin: 0px;
 }
 
-/* リンク（<a>）に対する設定 */
-#navi li a {
-  /* リンク全体をクリックできるようにする */
-  display: block; 
-  
-  /* 文字色、フォント、パディングを設定 */
-  color: white;
-  text-decoration: none; /* デフォルトの下線を消す */
-  padding: 15px 20px; /* 上下左右の余白 */
-  font-weight: bold;
+/* メインコンテンツとサイドコンテンツを分けるためのやつ */
+.contents-wrapper{
+    display: flex;
 }
 
-#navi li:hover {
-    background-color: #3b7b46; /* 少し明るい緑色 */
+/* メインのコンテンツ。 */
+.main-contents {
+    width: 75%;
 }
 
-/* 選択されている項目（例: TOP）のスタイル */
-#navi li:active {
-    background-color: #3b7b46; /* 少し明るい緑色 */
+/* リストを囲むためのやつ */
+.list-wrapper {
+    padding: 0;
 }
 
-#navi li:active a {
-    color: #ffcc00; /* 黄色の文字 */
+/* リストの要素を整える奴？ */
+.list {
+    width: 100%;
+    padding: 0;
 }
 
+/* リスト内のアイテムのためのやつ */
+.list li {
+    height: 2em;
+}
 
+/* リストの偶数列の色味調整 */
+.list li:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* セクションを色々包むやつ */
+.sections-wrapper {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+/* 各セクション */
+.section {
+    width: 45%;
+    background-color: aliceblue;
+    padding: 0 0;
+    margin: 10px;
+}
+
+/* 文字を切り返さずに...にするための処理 */
+.nowrap {
+    width: 100%; /* 親要素(li)の幅いっぱいに広げる */
+    /* 必須: 3点セット */
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* サイドコンテンツの設定 */
+.side-contents {
+    flex-grow: 1;
+}
 
 
 @media screen and (max-width: 1023px) {
@@ -90,38 +231,7 @@
 /* 画面幅が768px以下の場合に適用されるCSS */
 @media screen and (max-width: 768px) {
 
-    #container_baskground {
-        /* 幅を画面幅に合わせて調整 */
-        width: 100%;
-    }
-
-    #container {
-        /* 幅を画面幅に合わせて調整 */
-        width: 100%;
-    }
     
-    
-    #navi {
-        /* 横並びから縦並びに変更 */
-        flex-direction: column;
-        
-        /* 縦並びになったときに画面全体を使うようにする */
-        width: 100%;
-    }
-
-    #navi li {
-        /* 各項目が画面いっぱいの幅になるようにする */
-        width: 100%;
-        /* 縦並びではマージンをリセットまたは調整 */
-        margin: 0;
-    }
-    
-    #navi li a {
-        /* 縦並びになったので、パディングを少し調整 */
-        padding: 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* 区切り線を追加 (オプション) */
-        text-align: center;
-    }
 }
 
 @media screen and (max-width: 479px) {

@@ -1,13 +1,5 @@
-<body>
-
-<h1 id="header"> <%= activity %></h1>
-<div>
-    <ul id="navi">
-        <li><a href="/top" <% if (currentPage == "top"){%> class=currentPage <%}%> >Top</a></li>
-        <li><a href="/about" <% if (currentPage == "about"){%> class=currentPage <%}%> >About</a></li>
-        <li><a href="/news" <% if (currentPage == "news"){%> class=currentPage <%}%> >News</a></li>
-        <li><a href="/members" <% if (currentPage == "members"){%> class=currentPage <%}%> >Members</a></li>
-        <li><a href="/join" <% if (currentPage == "join"){%> class=currentPage <%}%> >Join</a></li>
-        <li><a href="/contact" <% if (currentPage == "contact"){%> class=currentPage <%}%> >Contact</a></li>
-    </ul>
+<div class="header">
+    <h1>
+        <%= activity %>
+    </h1>
 </div>
