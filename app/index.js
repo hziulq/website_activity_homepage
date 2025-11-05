@@ -4,10 +4,14 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const app = express();
 const port = process.env.PORT;
 const sql_api = process.env.SQL_API;
+const options = {
+    key: process.env.PRIVATE_KEY,
+    cert: process.env.CERTIFICATE
+}
 
+const app = express(options);
 
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -56,6 +60,32 @@ app.get('/news', async (req, res) => {
         res.render("news.ejs",{ 
             activity: process.env.ACTIVITY,
             currentPage: 'news',
+        });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
+
+app.get('/members', async (req, res) => {
+    try {
+        res.render("members.ejs",{ 
+            activity: process.env.ACTIVITY,
+            currentPage: 'members',
+        });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
+
+app.get('/join', async (req, res) => {
+    try {
+        res.render("join.ejs",{ 
+            activity: process.env.ACTIVITY,
+            currentPage: 'join',
         });
     }
     catch (err) {

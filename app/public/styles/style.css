@@ -1,4 +1,4 @@
-html {
+/* html {
   box-sizing: border-box;
 }
 
@@ -6,7 +6,7 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
-}
+} */
 
 body {
     font-family: 'Times New Roman', Times, serif;
@@ -15,6 +15,10 @@ body {
 
 .font-small {
     font-size: small;
+}
+
+.font-1em {
+    font-size: 1em;
 }
 
 .shadow {
@@ -64,14 +68,14 @@ ul {
 }
 
 .top-image {
-    width: 768px;
+    width: 1023px;
 }
 
 /* 縦長のコンテンツを作るためのコンテナ */
 .container {
     /* border-color: rgba(0, 0, 0, 1);
     border : solid 1px; */
-    width: 768px;
+    width: 1023px;
     margin: 0 auto;
     background-color: rgba(0, 0, 0, 0.3);
 }
@@ -108,7 +112,7 @@ img {
     display: flex;
     justify-content: center;
     list-style-type: none;
-    width: 768px;
+    width: 1023px;
     margin: auto 0 ;
     padding:0;
 }
@@ -122,6 +126,10 @@ img {
     width: calc(100% / 6);
     border-right: 1px solid rgba(255, 255, 255, 0.3);
     flex-grow: 1;
+}
+
+.nav a:hover {
+    background-color:  rgba(0, 0, 0, 0.2);
 }
 
 /* 一番左だけちょっと調整 */
@@ -153,6 +161,7 @@ img {
         ),
         rgba(255,255,0,1);
 }
+
 
 a.currentPage {
     color: rgba(0, 0, 0, 1);
@@ -187,7 +196,10 @@ a.currentPage {
 
 /* リスト内のアイテムのためのやつ */
 .list li {
+    box-sizing: border-box;
     height: 2em;
+    padding: 5px;
+    margin: 0;
 }
 
 /* リストの偶数列の色味調整 */
@@ -203,10 +215,40 @@ a.currentPage {
 
 /* 各セクション */
 .section {
-    width: 45%;
     background-color: aliceblue;
     padding: 0 0;
-    margin: 10px;
+    margin: 20px 10px;
+}
+
+.members-introductions {
+    /* Flexboxを有効にする */
+    display: flex;
+
+    /* 子要素を折り返して次の行に移動させる */
+    flex-wrap: wrap;
+}
+
+.member-items {
+     width:calc(25% - 10px);
+}
+
+.member-image {
+    width:100%;
+    padding:0px;
+}
+
+
+
+
+
+.width-max {
+    width: 100%;
+}
+
+
+
+.mini {
+    width:calc(50% - 20px);
 }
 
 /* 文字を切り返さずに...にするための処理 */
@@ -217,6 +259,8 @@ a.currentPage {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
 
 /* サイドコンテンツの設定 */
 .side-contents {
