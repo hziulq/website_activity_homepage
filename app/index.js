@@ -57,8 +57,12 @@ app.get('/about', async (req, res) => {
 
 app.get('/news', async (req, res) => {
     try {
+        const result = await axios.get(`${sql_api}/news`);
+        // console.log(result.data)
+
         res.render("news.ejs",{ 
             activity: process.env.ACTIVITY,
+            datas: result.data.datas,
             currentPage: 'news',
         });
     }

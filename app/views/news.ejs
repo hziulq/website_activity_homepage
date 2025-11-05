@@ -11,7 +11,10 @@
                                     <h2 class="section-title">Recent News</h2>
                                     <div class="list-wrapper">
                                         <ul class="list font-small">
-                                            <li class="nowrap"><a></a></li>
+                                            <%if (datas && datas.length > 0){
+                                                datas.forEach((row)=>{ %>
+                                                <li class="nowrap"><%= row.post_date %><a><%= row.title %></a></li>
+                                                <% }) } %>
                                         </ul>
                                     </div>
                                 </div>
