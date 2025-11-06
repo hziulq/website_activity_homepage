@@ -36,12 +36,17 @@ INSERT INTO cources (cource_name) VALUES
 ('IT-webコース'),
 ('AI-開発コース');
 
+INSERT INTO grades (grade_name) VALUES
+('１年'),
+('２年'),
+('３年'),
+('４年'),
+('顧問');
 
-
-INSERT INTO members (full_name, face_photo, cource_id, enrollment_year, github_url) VALUES
-('中村 陽太', '/images/members/中村 陽太.png', 1, '2025/04/01','https://github.com/hziulq/website_activity_homepage'),
-('伴野 雅勝', '/images/members/伴野 雅勝.png', 2, '2024/04/01','https://github.com/hziulq/website_activity_homepage'),
-('吉田 花', '/images/members/吉田 花.png', 3, '2023/04/01','https://github.com/hziulq/website_activity_homepage');
+INSERT INTO members (full_name, photo_url, cource_id, enrollment_year, grade_id, github_url) VALUES
+('中村 陽太', '/images/members/中村 陽太.png', 1, '2025/04/01', 1,'https://github.com/hziulq/website_activity_homepage'),
+('伴野 雅勝', '/images/members/伴野 雅勝.png', 2, '2024/04/01', 2,'https://github.com/hziulq/website_activity_homepage'),
+('吉田 花', '/images/members/吉田 花.png', 3, '2023/04/01', 3,'https://github.com/hziulq/website_activity_homepage');
 
 
 

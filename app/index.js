@@ -43,8 +43,14 @@ app.get('/', async (req, res) => {
  */
 app.get('/top', async (req, res) => {
     try {
+
+        const result_news = await axios.get(`${sql_api}/news?top=1`);
+        const result_updates = await axios.get(`${sql_api}/updates?top=1`);
+
         res.render("top.ejs", {
             activity: process.env.ACTIVITY,
+            articles: result_news.data.datas,
+            updates : result_updates.data.datas,
             currentPage: 'top'
          });
     }
@@ -99,6 +105,30 @@ app.get('/news/:id', async (req, res) => {
     }
 })
 
+/**
+ * 個別のアップデートページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
+app.get('/updates/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const result = await axios.get(`${sql_api}/updates/${id}`);
+        // console.log(result.data)
+
+        res.render("news-id.ejs",{
+            activity: process.env.ACTIVITY,
+            article: result.data.datas[0],
+            currentPage: 'news',
+        });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
+
 
 /**
  * ニュースページハンドラ。
@@ -107,13 +137,19 @@ app.get('/news/:id', async (req, res) => {
  * @returns {void} レスポンスをクライアントに送信する。
  */
 app.get('/news', async (req, res) => {
+    
+    let page = req.query.page;
+    if (page == undefined){
+        page = 0;
+    }
+    
     try {
-        const result = await axios.get(`${sql_api}/news`);
+        const result = await axios.get(`${sql_api}/news?page=${page}`);
         // console.log(result.data)
 
         res.render("news.ejs",{
             activity: process.env.ACTIVITY,
-            datas: result.data.datas,
+            articles: result.data.datas,
             currentPage: 'news',
         });
     }
@@ -131,9 +167,15 @@ app.get('/news', async (req, res) => {
  * @returns {void} レスポンスをクライアントに送信する。
  */
 app.get('/members', async (req, res) => {
+
+    const select = req.query.select || 'all';
+
     try {
+        const members = await axios.get(`${sql_api}/members?select=${select}`)
+
         res.render("members.ejs",{ 
             activity: process.env.ACTIVITY,
+            members: members.data.datas,
             currentPage: 'members',
         });
     }

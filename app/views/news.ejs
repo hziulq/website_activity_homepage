@@ -10,10 +10,18 @@
                                 <div class="section width-max shadow">
                                     <h2 class="section-title">Recent News</h2>
                                     <div class="list-wrapper">
-                                        <ul class="list font-small">
-                                            <%if (datas && datas.length > 0){
-                                                datas.forEach((row)=>{ %>
-                                                <li class="nowrap"><%= row.post_date %><a href="/news/<%= row.id %>"><%= row.title %></a></li>
+                                        <ul class="list font-1em">
+                                            <%if (articles && articles.length> 0){
+                                                articles.forEach((row)=>{ %>
+                                                <li class="nowrap nopad nomag">
+                                                    <span ><%= row.post_date.substring(0, 10) %></span>
+                                                    <span class="genre-name nopad nomag">
+                                                            <%= row.genre_name %>
+                                                    </span>
+                                                    <a class="nopad nomag" href="/news/<%= row.id %>">
+                                                        <%= row.title %>
+                                                    </a>
+                                                </li>
                                                 <% }) } %>
                                         </ul>
                                     </div>

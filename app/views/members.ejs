@@ -10,66 +10,24 @@
                                 <div class="section shadow width-max">
                                     <h2 class="section-title">部員紹介</h2>
                                     <div class="members-introductions">
-                                        <div class="member-items">
-                                            <img src="/images/members/中村 陽太.png" alt="member-image" class="member-image">
-                                            <h3>中村 陽太</h3>
-                                            <p>
-                                                <span>学年</span>
-                                                <span>学科</span>
-                                                <span>開発経験</span>
-                                                <span>github</span>
-                                            </p>
-                                        </div>
-                                        <div class="member-items">
-                                            <img src="/images/members/中村 陽太.png" alt="member-image" class="member-image">
-                                            <h3>中村 陽太</h3>
-                                            <p>
-                                                <span>学年</span>
-                                                <span>学科</span>
-                                                <span>開発経験</span>
-                                                <span>github</span>
-                                            </p>
-                                        </div>
-                                        <div class="member-items">
-                                            <img src="/images/members/中村 陽太.png" alt="member-image" class="member-image">
-                                            <h3>中村 陽太</h3>
-                                            <p>
-                                                <span>学年</span>
-                                                <span>学科</span>
-                                                <span>開発経験</span>
-                                                <span>github</span>
-                                            </p>
-                                        </div>
-                                        <div class="member-items">
-                                            <img src="/images/members/中村 陽太.png" alt="member-image" class="member-image">
-                                            <h3>中村 陽太</h3>
-                                            <p>
-                                                <span>学年</span>
-                                                <span>学科</span>
-                                                <span>開発経験</span>
-                                                <span>github</span>
-                                            </p>
-                                        </div>
-                                        <div class="member-items">
-                                            <img src="/images/members/中村 陽太.png" alt="member-image" class="member-image">
-                                            <h3>中村 陽太</h3>
-                                            <p>
-                                                <span>学年</span>
-                                                <span>学科</span>
-                                                <span>開発経験</span>
-                                                <span>github</span>
-                                            </p>
-                                        </div>
-                                        <div class="member-items">
-                                            <img src="/images/members/中村 陽太.png" alt="member-image" class="member-image">
-                                            <h3>中村 陽太</h3>
-                                            <p>
-                                                <span>学年</span>
-                                                <span>学科</span>
-                                                <span>開発経験</span>
-                                                <span>github</span>
-                                            </p>
-                                        </div>
+                                        <% if (members && members.length> 0){
+                                            members.forEach((member)=>{%>
+                                            <div class="member-items">
+                                                <img src="<%= member.photo_url %>" alt="member-image"
+                                                    class="member-image">
+                                                <h3>
+                                                    <%= member.full_name %>
+                                                </h3>
+                                                <p>
+                                                    <%= member.grade_name %>
+                                                </p>
+                                                <p>
+                                                    <%= member.cource_name %>
+                                                </p>
+                                                <p>開発経験</p>
+                                                <p>github</p>
+                                            </div>
+                                            <%}) }%>
                                     </div>
                                 </div>
                             </div>
@@ -80,12 +38,12 @@
                                     <h2 class="section-title">Side Menu</h2>
                                     <div class="list-wrapper">
                                         <ul class="list font-small">
-                                            <li><a href="/members">全員</a></li>
-                                            <li><a href="/members">顧問</a></li>
-                                            <li><a href="/members">４年</a></li>
-                                            <li><a href="/members">３年</a></li>
-                                            <li><a href="/members">２年</a></li>
-                                            <li><a href="/members">１年</a></li>
+                                            <li><a href="/members?select=all">全員</a></li>
+                                            <li><a href="/members?select=5">顧問</a></li>
+                                            <li><a href="/members?select=4">４年</a></li>
+                                            <li><a href="/members?select=3">３年</a></li>
+                                            <li><a href="/members?select=2">２年</a></li>
+                                            <li><a href="/members?select=1">１年</a></li>
                                         </ul>
                                     </div>
 

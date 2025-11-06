@@ -38,15 +38,21 @@ CREATE TABLE cources (
     cource_name VARCHAR(64)
 );
 
+CREATE TABLE grades (
+    id SERIAL PRIMARY KEY,
+    grade_name VARCHAR(32)
+);
 
 CREATE TABLE members (
     id SERIAL PRIMARY KEY,
     full_name VARCHAR(64),
-    face_photo VARCHAR(1024),
+    photo_url VARCHAR(1024),
     cource_id INTEGER,
     enrollment_year DATE,
+    grade_id INTEGER,
     github_url VARCHAR(1024),
-    FOREIGN KEY(cource_id) REFERENCES cources(id)
+    FOREIGN KEY(cource_id) REFERENCES cources(id),
+    FOREIGN KEY(grade_id) REFERENCES grades(id)
 );
 
 
