@@ -18,6 +18,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 
+
+/**
+ * ルートにアクセスしたときに、トップページリダイレクトするハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.get('/', async (req, res) => {
     try {
         res.redirect("/top");
@@ -28,6 +35,12 @@ app.get('/', async (req, res) => {
     }
 })
 
+/**
+ * トップページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.get('/top', async (req, res) => {
     try {
         res.render("top.ejs", {
@@ -41,6 +54,13 @@ app.get('/top', async (req, res) => {
     }
 })
 
+
+/**
+ * 概要ハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.get('/about', async (req, res) => {
     try {
         res.render("about.ejs", { 
@@ -55,12 +75,43 @@ app.get('/about', async (req, res) => {
 })
 
 
+/**
+ * 個別のニュースページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
+app.get('/news/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        const result = await axios.get(`${sql_api}/news/${id}`);
+        // console.log(result.data)
+
+        res.render("news-id.ejs",{
+            activity: process.env.ACTIVITY,
+            article: result.data.datas[0],
+            currentPage: 'news',
+        });
+    }
+    catch (err) {
+        res.status(500).send('Server Error');
+        console.log(err.message);
+    }
+})
+
+
+/**
+ * ニュースページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.get('/news', async (req, res) => {
     try {
         const result = await axios.get(`${sql_api}/news`);
         // console.log(result.data)
 
-        res.render("news.ejs",{ 
+        res.render("news.ejs",{
             activity: process.env.ACTIVITY,
             datas: result.data.datas,
             currentPage: 'news',
@@ -72,6 +123,13 @@ app.get('/news', async (req, res) => {
     }
 })
 
+
+/**
+ * 部員ページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.get('/members', async (req, res) => {
     try {
         res.render("members.ejs",{ 
@@ -85,6 +143,13 @@ app.get('/members', async (req, res) => {
     }
 })
 
+
+/**
+ * 入部ページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.get('/join', async (req, res) => {
     try {
         res.render("join.ejs",{ 
@@ -98,6 +163,12 @@ app.get('/join', async (req, res) => {
     }
 })
 
+/**
+ * お問い合わせページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.get('/contact', async (req, res) => {
     try {
         res.render("contact.ejs",{ 
@@ -126,6 +197,12 @@ app.get('/contact', async (req, res) => {
 //     }
 // });
 
+/**
+ * 404ページハンドラ。
+ * @param {object} req - Expressのリクエストオブジェクト。
+ * @param {object} res - Expressのレスポンスオブジェクト。
+ * @returns {void} レスポンスをクライアントに送信する。
+ */
 app.use(async (req, res) => {
     try {
         res.render("error_404.ejs",{ activity: process.env.ACTIVITY });
@@ -136,6 +213,10 @@ app.use(async (req, res) => {
     }
 })
 
+/**
+ * トップページハンドラ。
+ * @param {object} port - ポート番号。
+ */
 app.listen(port, (err) => {
     if (err) {
         console.log(err);

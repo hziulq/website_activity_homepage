@@ -13,7 +13,7 @@
                                         <ul class="list font-small">
                                             <%if (datas && datas.length > 0){
                                                 datas.forEach((row)=>{ %>
-                                                <li class="nowrap"><%= row.post_date %><a><%= row.title %></a></li>
+                                                <li class="nowrap"><%= row.post_date %><a href="/news/<%= row.id %>"><%= row.title %></a></li>
                                                 <% }) } %>
                                         </ul>
                                     </div>

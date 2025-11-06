@@ -1,0 +1,24 @@
+<%- include('partial/head.ejs') %>
+
+    <div class="main">
+        <%- include('partial/header.ejs') %>
+            <%- include('partial/nav.ejs') %>
+                <div class="container">
+                    <div class="contents-wrapper">
+                        <div class="main-contents width-max">
+                            <div class="sections-wrapper">
+                                <div class="section width-max shadow">
+                                    <% if (article){ %>
+                                        <h2 class="section-title"><%= article.title %></h2>
+                                        <p><%= article.post_date %></p>
+                                        <p><%= article.genre_name %></p>
+                                        <p><%= article.content %></p>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+    <%- include('partial/footer.ejs') %>

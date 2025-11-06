@@ -27,13 +27,22 @@ const pool = new pg.Pool({
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/news', async (req, res) => {
+app.get('/news/:id', async (req, res) => {
 
+    const id = req.params.id;
     const client = await pool.connect();
 
     try {
         const result = await client.query(
-            "SELECT * FROM news;"
+            `
+            SELECT n.id, n.title, n.post_date, n.content, g.genre_name
+            FROM news AS n
+            INNER JOIN news_genres AS g
+              ON n.genre_id = g.id
+            WHERE n.id = $1
+            ORDER BY n.post_date DESC;  
+            `,
+            [id]
         )
 
         res.status(200).json({
@@ -53,7 +62,43 @@ app.get('/news', async (req, res) => {
     } finally {
         // 処理が終わったらクライアントをプールに「解放」する (重要)
         client.release();
-        console.log('Client released back to pool.');
+        // console.log('Client released back to pool.');
+    }
+})
+
+app.get('/news', async (req, res) => {
+
+    const client = await pool.connect();
+
+    try {
+        const result = await client.query(
+            `
+            SELECT n.id, n.title, n.post_date, g.genre_name
+            FROM news AS n
+            INNER JOIN news_genres AS g
+              ON n.genre_id = g.id
+            ORDER BY n.post_date DESC;  
+            `
+        )
+
+        res.status(200).json({
+            status: 'success',
+            datas: result.rows,
+            count: result.rowCount
+        });
+        console.log("success! /news")
+
+    } catch (error) {
+        console.error('--- プール操作エラー ---', error);
+        res.status(500).json({
+            status: 'error',
+            message: 'Failed to retrieve data from database.',
+            details: err.message
+        });
+    } finally {
+        // 処理が終わったらクライアントをプールに「解放」する (重要)
+        client.release();
+        // console.log('Client released back to pool.');
     }
 })
 
