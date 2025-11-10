@@ -3,31 +3,31 @@
     <div class="main">
         <%- include('partial/header.ejs') %>
             <%- include('partial/nav.ejs') %>
-                <div class="container">
-                    <div class="contents-wrapper">
-                        <div class="main-contents width-max">
-                            <div class="sections-wrapper">
-                                <div class="section width-max shadow">
-                                    <h2 class="section-title">ABOUT</h2>
-                                    <div>
-                                        <h2>概要</h2>
-                                        <p>
-                                            <%= activity %>は、プログラミングコンテストに参加し、技術力を高めることを目的とした学生団体です。多様なバックグラウンドを持つメンバーが集まり、切磋琢磨しながら成長しています。
-                                        </p>
-                                    </div>
+                <div class="page-wrapper">
+                    <div class="container">
+                        <div class="contents-wrapper">
+                            <div class="main-contents width-max">
+                                <div class="sections-wrapper">
+                                    <div class="section width-max shadow">
+                                        <h2 class="section-title">ABOUT</h2>
+                                        <div>
+                                            <h2>概要</h2>
+                                            <p class="font-1em">
+                                                <%= activity %>は、プログラミングコンテストに参加し、技術力を高めることを目的とした学生団体です。多様なバックグラウンドを持つメンバーが集まり、切磋琢磨しながら成長しています。
+                                            </p>
+                                        </div>
 
-                                    <div>
-                                        <h2>理念</h2>
-                                        <p>私たち<%= activity %>は、技術の探求と創造を通じて、未来の可能性を広げることを使命としています。チームワークと革新を重んじ、共に成長し続けることを目指します。</p>
-                                    </div>
+                                        <div>
+                                            <h2>理念</h2>
+                                            <p class="font-1em"><%= activity %>は、技術の探求と創造を通じて、未来の可能性を広げることを使命としています。チームワークと革新を重んじ、共に成長し続けることを目指します。
+                                            </p>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <%- include('partial/footer.ejs') %>
     </div>
-
-    <%- include('partial/footer.ejs') %>
-
-    

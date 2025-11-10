@@ -192,11 +192,11 @@ app.get('/members', async (req, res) => {
  * @param {object} res - Expressのレスポンスオブジェクト。
  * @returns {void} レスポンスをクライアントに送信する。
  */
-app.get('/join', async (req, res) => {
+app.get('/special', async (req, res) => {
     try {
-        res.render("join.ejs",{ 
+        res.render("special.ejs",{ 
             activity: process.env.ACTIVITY,
-            currentPage: 'join',
+            currentPage: 'special',
         });
     }
     catch (err) {
@@ -205,17 +205,20 @@ app.get('/join', async (req, res) => {
     }
 })
 
+
+let counter = 0;
 /**
  * お問い合わせページハンドラ。
  * @param {object} req - Expressのリクエストオブジェクト。
  * @param {object} res - Expressのレスポンスオブジェクト。
  * @returns {void} レスポンスをクライアントに送信する。
  */
-app.get('/contact', async (req, res) => {
+app.get('/this_is', async (req, res) => {
     try {
-        res.render("contact.ejs",{ 
+        console.log("counter: " + ++counter);
+        res.render("this_is.ejs",{ 
             activity: process.env.ACTIVITY,
-            currentPage: 'contact',
+            currentPage: 'this_is',
         });
     }
     catch (err) {

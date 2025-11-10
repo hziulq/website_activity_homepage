@@ -4,69 +4,83 @@
         <%- include('partial/header.ejs') %>
             <%- include('partial/top_image.ejs') %>
                 <%- include('partial/nav.ejs') %>
-                    <div class="container">
-                        <div class="contents-wrapper">
-                            <div class="main-contents">
-                                <div class="sections-wrapper">
-                                    <div class="section mini shadow">
-                                        <h2 class="section-title">Recent News</h2>
-                                        <div class="list-wrapper">
-                                            <ul class="list font-1em">
-                                                <%if (articles && articles.length> 0){
-                                                    articles.forEach((row)=>{ %>
-                                                    <li class="nowrap nopad nomag">
-                                                        <span>
-                                                            <%= row.post_date.substring(0, 10) %>
-                                                        </span>
-                                                        <span class="genre-name nopad nomag">
-                                                            <%= row.genre_name %>
-                                                        </span>
-                                                        <a class="nopad nomag" href="/news/<%= row.id %>">
-                                                            <%= row.title %>
-                                                        </a>
-                                                    </li>
-                                                    <% }) } %>
-                                            </ul>
+                    <div class="page-wrapper">
+                        <div class="container">
+                            <div class="contents-wrapper">
+                                <div class="main-contents">
+                                    <div class="sections-wrapper">
+                                        <div class="section mini shadow">
+                                            <h2 class="section-title">Recent News</h2>
+                                            <div class="list-wrapper">
+                                                <ul class="list font-1em">
+                                                    <%if (articles && articles.length> 0){
+                                                        articles.forEach((row)=>{ %>
+                                                        <li class="nowrap nopad nomag">
+                                                            <span>
+                                                                <%= row.post_date.substring(0, 10) %>
+                                                            </span>
+                                                            <span class="genre-name nopad nomag">
+                                                                <%= row.genre_name %>
+                                                            </span>
+                                                            <a class="nopad nomag" href="/news/<%= row.id %>">
+                                                                <%= row.title %>
+                                                            </a>
+                                                        </li>
+                                                        <% }) } %>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="section mini shadow">
+                                            <h2 class="section-title">Recent Update</h2>
+                                            <div class="list-wrapper">
+                                                <ul class="list font-1em">
+                                                    <%if (updates && updates.length> 0){
+                                                        updates.forEach((row)=>{ %>
+                                                        <li class="nowrap nopad nomag">
+                                                            <span>
+                                                                <%= row.post_date.substring(0, 10) %>
+                                                            </span>
+                                                            <span class="genre-name nopad nomag">
+                                                                <%= row.genre_name %>
+                                                            </span>
+                                                            <a class="nopad nomag" href="/updates/<%= row.id %>">
+                                                                <%= row.title %>
+                                                            </a>
+                                                        </li>
+                                                        <% }) } %>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="section mini shadow">
-                                        <h2 class="section-title">Recent Update</h2>
-                                        <div class="list-wrapper">
-                                            <ul class="list font-1em">
-                                                <%if (updates && updates.length> 0){
-                                                    updates.forEach((row)=>{ %>
-                                                    <li class="nowrap nopad nomag">
-                                                        <span>
-                                                            <%= row.post_date.substring(0, 10) %>
-                                                        </span>
-                                                        <span class="genre-name nopad nomag">
-                                                            <%= row.genre_name %>
-                                                        </span>
-                                                        <a class="nopad nomag" href="/updates/<%= row.id %>">
-                                                            <%= row.title %>
-                                                        </a>
-                                                    </li>
-                                                    <% }) } %>
-                                            </ul>
+                                    <h2 class="section-title">Contents</h2>
+                                    <div class="sections-wrapper width-100p">
+                                        <div class="section shadow width-100p">
+                                            <h2 class="section-title ">Activity</h2>
+                                            <img src="">
+                                            <div>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h2 class="section-title">Contents</h2>
-                                <div class="sections-wrapper">
-                                    <div class="section shadow">
-                                        <h2 class="section-title">Recent Update</h2>
-                                        <div>
-
+                                <div class="side-contents">
+                                    <h2>Side Menu</h2>
+                                    <div class="contents-wrapper flex-direction-column">
+                                        <div class="banner_button join">
+                                            <a href="https://forms.gle/uwMjDyMERUSKWR87A"><img
+                                                    src="/images/入部案内.png"></img></a>
+                                        </div>
+                                        <div class="banner_button contact">
+                                            <a href="https://forms.gle/MBvEFK4cqvcbop9b8 "><img
+                                                    src="/images/お問い合わせ.png"></img></a>
+                                        </div>
+                                        <div class="banner_button introduce">
+                                            <a href="/special#:~:text=%E3%81%AE%E9%9B%86%E5%90%88%E5%86%99%E7%9C%9F-,%E4%BD%9C%E5%93%81%E7%B4%B9%E4%BB%8B,-%E3%82%A6%E3%82%A7%E3%83%96%E3%83%9A%E3%83%BC%E3%82%B8"><img src="/images/作品紹介.png"></img></a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="side-contents">
-                                <h2>Side Menu</h2>
-
                             </div>
                         </div>
                     </div>
+                    <%- include('partial/footer.ejs') %>
     </div>
-
-    <%- include('partial/footer.ejs') %>

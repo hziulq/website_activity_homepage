@@ -10,11 +10,11 @@ INSERT INTO news_genres (genre_name) VALUES
 
 INSERT INTO news (genre_id, post_date, title, thumbnail_url, content) VALUES
 (2, '2025/10/21', '第二回LT会を開催しました。','/images/thumbnail/001.png','今回のLT会「PostgreSQLとデータモデリング」は、非常に実践的で学びの多い時間となりました。普段からデータベース設計に関わる中で抱えていた疑問点や、よりモダンなPostgreSQLの機能の活用法について、具体例を通じて深く理解することができました。'),
-(1, '2025/10/01', '学園祭にて、フランクフルト屋台の出店が確定しました。','',''),
-(3, '2025/10/01', '学園祭にて、アプリ展示を行います。','',''),
-(4, '2025/10/01', '一年生のアプリ制作が開始しました。','',''),
-(4, '2025/8/20', 'U22にアプリを提出しました。','',''),
-(4, '2025/8/21', 'マジカルミライにアプリを提出しました。','','');
+(1, '2025/10/01', '学園祭にて、フランクフルト屋台の出店が確定しました。','','現在、この記事は書きかけです。'),
+(3, '2025/10/01', '学園祭にて、アプリ展示を行います。','','現在、この記事は書きかけです。'),
+(4, '2025/10/01', '一年生のアプリ制作が開始しました。','','現在、この記事は書きかけです。'),
+(4, '2025/8/20', 'U22にアプリを提出しました。','','現在、この記事は書きかけです。'),
+(4, '2025/8/21', 'マジカルミライにアプリを提出しました。','','現在、この記事は書きかけです。');
 
 
 INSERT INTO update_genres (genre_name) VALUES
@@ -26,15 +26,16 @@ INSERT INTO update_genres (genre_name) VALUES
 
 INSERT INTO updates (genre_id, post_date, title, content) VALUES
 (1, '2025/10/30', 'dockerの立ち上げが成功しました','予定しているすべてのdocker containerの立ち上げが正常に動作することを確認しました。'),
-(2, '2025/11/04', '管理人がCSSのコツをつかんできました。',''),
-(3, '2025/11/05', '技育博2025に申し込みました。','');
+(2, '2025/11/04', '管理人がCSSのコツをつかんできました。','現在、この記事は書きかけです。'),
+(3, '2025/11/05', '技育博2025に申し込みました。','現在、この記事は書きかけです。');
 
 
 INSERT INTO cources (cource_name) VALUES
 ('IT-AIコース'),
 ('IT-インフラコース'),
 ('IT-webコース'),
-('AI-開発コース');
+('AI-開発コース'),
+('教員');
 
 INSERT INTO grades (grade_name) VALUES
 ('１年'),
@@ -46,7 +47,10 @@ INSERT INTO grades (grade_name) VALUES
 INSERT INTO members (full_name, photo_url, cource_id, enrollment_year, grade_id, github_url) VALUES
 ('中村 陽太', '/images/members/中村 陽太.png', 1, '2025/04/01', 1,'https://github.com/hziulq/website_activity_homepage'),
 ('伴野 雅勝', '/images/members/伴野 雅勝.png', 2, '2024/04/01', 2,'https://github.com/hziulq/website_activity_homepage'),
-('吉田 花', '/images/members/吉田 花.png', 3, '2023/04/01', 3,'https://github.com/hziulq/website_activity_homepage');
+('吉田 花', '/images/members/吉田 花.png', 3, '2023/04/01', 3,'https://github.com/hziulq/website_activity_homepage'),
+('恩地 宏亮', '/images/members/恩地 宏亮.png', 5, '2019/04/01', 5,'https://github.com/hziulq/website_activity_homepage'),
+('林 拓海', '/images/members/林 拓海.png', 4, '2025/04/01', 1,'https://github.com/hziulq/website_activity_homepage'),
+('立野 靖史', '/images/members/立野 靖史.png', 2, '2022/04/01', 4,'https://github.com/hziulq/website_activity_homepage');
 
 
 

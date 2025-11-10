@@ -3,55 +3,56 @@
     <div class="main">
         <%- include('partial/header.ejs') %>
             <%- include('partial/nav.ejs') %>
-                <div class="container">
-                    <div class="contents-wrapper">
-                        <div class="main-contents">
-                            <div class="sections-wrapper">
-                                <div class="section shadow width-max">
-                                    <h2 class="section-title">部員紹介</h2>
-                                    <div class="members-introductions">
-                                        <% if (members && members.length> 0){
-                                            members.forEach((member)=>{%>
-                                            <div class="member-items">
-                                                <img src="<%= member.photo_url %>" alt="member-image"
-                                                    class="member-image">
-                                                <h3>
-                                                    <%= member.full_name %>
-                                                </h3>
-                                                <p>
-                                                    <%= member.grade_name %>
-                                                </p>
-                                                <p>
-                                                    <%= member.cource_name %>
-                                                </p>
-                                                <p>開発経験</p>
-                                                <p>github</p>
-                                            </div>
-                                            <%}) }%>
+                <div class="page-wrapper">
+                    <div class="container">
+                        <div class="contents-wrapper">
+                            <div class="main-contents">
+                                <div class="sections-wrapper">
+                                    <div class="section shadow width-max">
+                                        <h2 class="section-title">部員紹介</h2>
+                                        <div class="members-introductions">
+                                            <% if (members && members.length> 0){
+                                                members.forEach((member)=>{%>
+                                                <div class="member-items">
+                                                    <img src="<%= member.photo_url %>" alt="member-image"
+                                                        class="member-image">
+                                                    <h3>
+                                                        <%= member.full_name %>
+                                                    </h3>
+                                                    <p>
+                                                        <%= member.grade_name %>
+                                                    </p>
+                                                    <p>
+                                                        <%= member.cource_name %>
+                                                    </p>
+                                                    <p>開発経験：未実装</p>
+                                                    <p>github：未実装</p>
+                                                </div>
+                                                <%}) }%>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="side-contents">
-                            <div class="sections-wrapper">
-                                <div class="section shadow width-max">
-                                    <h2 class="section-title">Side Menu</h2>
-                                    <div class="list-wrapper">
-                                        <ul class="list font-small">
-                                            <li><a href="/members?select=all">全員</a></li>
-                                            <li><a href="/members?select=5">顧問</a></li>
-                                            <li><a href="/members?select=4">４年</a></li>
-                                            <li><a href="/members?select=3">３年</a></li>
-                                            <li><a href="/members?select=2">２年</a></li>
-                                            <li><a href="/members?select=1">１年</a></li>
-                                        </ul>
-                                    </div>
+                            <div class="side-contents">
+                                <div class="sections-wrapper">
+                                    <div class="section shadow width-max">
+                                        <h2 class="section-title">Side Menu</h2>
+                                        <div class="list-wrapper">
+                                            <ul class="list font-1em">
+                                                <li><a href="/members?select=all">全員</a></li>
+                                                <li><a href="/members?select=5">顧問</a></li>
+                                                <li><a href="/members?select=4">４年</a></li>
+                                                <li><a href="/members?select=3">３年</a></li>
+                                                <li><a href="/members?select=2">２年</a></li>
+                                                <li><a href="/members?select=1">１年</a></li>
+                                            </ul>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <%- include('partial/footer.ejs') %>
     </div>
-
-    <%- include('partial/footer.ejs') %>

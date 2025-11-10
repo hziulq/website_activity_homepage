@@ -8,13 +8,16 @@
   box-sizing: inherit;
 } */
 
+html,
 body {
     font-family: 'Times New Roman', Times, serif;
-
+    height: 100%; /* 画面の高さ全体を占めるようにする */
+    margin: 0; /* ブラウザのデフォルトマージンをリセット */
+    padding: 0;
 }
 
 .font-small {
-    font-size: small;
+    font-size: 100em;
 }
 
 .font-1em {
@@ -146,6 +149,7 @@ img {
     
     color: rgba(0, 0, 0, 0.6);
     font-family: "Geologica";
+    font-size: 1.3em;
     font-weight: 900;
 }
 
@@ -176,6 +180,12 @@ a.currentPage {
 /* メインコンテンツとサイドコンテンツを分けるためのやつ */
 .contents-wrapper{
     display: flex;
+}
+
+.page-wrapper {
+    display: flex; /* Flexコンテナにする */
+    flex-direction: column; /* 要素を縦方向に並べる */
+    min-height: 80vh; /* 💡 少なくともビューポート(画面)の高さ全体を確保 */
 }
 
 /* メインのコンテンツ。 */
@@ -237,10 +247,6 @@ a.currentPage {
     padding:0px;
 }
 
-
-
-
-
 .width-max {
     width: 100%;
 }
@@ -265,6 +271,10 @@ a.currentPage {
 /* サイドコンテンツの設定 */
 .side-contents {
     flex-grow: 1;
+    min-width: 0;
+
+    overflow: hidden; 
+    padding: 0 10px; /* 内部のパディングで調整 */
 }
 
 .genre-name {
@@ -276,8 +286,6 @@ a.currentPage {
     border-radius: 7.5px;
 }
     
-    
-    
 
 .nopad {
     padding: 0px;
@@ -285,6 +293,159 @@ a.currentPage {
 
 .nomag {
     margin: 0%;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.banner_button{
+    width: 12.5em;
+    height: 7em;
+    margin: 10px;
+    padding: 0px;
+    background-color: #84eb6a;
+    border-radius: 7.5px;
+    overflow: hidden;
+}
+
+.banner_button img {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    object-fit: cover;
+}
+
+.banner_button a {
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    object-fit: cover;
+}
+
+.item {
+    padding: 0;
+    margin: 10px;
+    width: calc(50% - 20px);
+}
+
+.item img {
+    width: 100%;
+    padding: 0;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.width-100p {
+    width: 100%;
+}
+
+
+/* =============================== */
+/* フッターの全体設定 */
+/* =============================== */
+.site-footer {
+    background-color: #2c3e50; /* 濃いめの落ち着いた色（ダークネイビー）*/
+    color: #ecf0f1; /* 明るいテキスト色 */
+    padding: 40px 0; /* 上下のパディングを多めに取る */
+    font-family: sans-serif; /* シンプルでモダンなフォント */
+    line-height: 1.6; /* 読みやすい行間 */
+}
+
+/* =============================== */
+/* コンテナとFlexboxレイアウト */
+/* =============================== */
+.footer-container {
+    max-width: 1200px; /* 最大幅を指定して中央に寄せる */
+    margin: 0 auto; /* 中央寄せ */
+    padding: 0 20px; /* 左右に余白 */
+
+    /* 💡 Flexboxで3つのセクションを横並びにする */
+    display: flex; 
+    flex-wrap: wrap; /* 画面が狭くなったら折り返す */
+    justify-content: space-between; /* 要素間にスペースを均等に配置 */
+}
+
+.footer-section {
+    width: 100%; /* スマホ時は全幅 */
+    margin-bottom: 20px;
+}
+/* 💡 デスクトップ時のカラム設定 */
+@media (min-width: 768px) {
+    .footer-section {
+        width: 30%; /* 3カラムにするため、約30%に設定 */
+        margin-bottom: 0;
+    }
+}
+
+/* =============================== */
+/* タイトルと段落の調整 */
+/* =============================== */
+.site-footer h3,
+.site-footer h4 {
+    color: #f1c40f; /* アクセントカラー（例：ゴールド/イエロー）*/
+    border-bottom: 2px solid #f1c40f; /* タイトルの下にアクセントライン */
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.site-footer p {
+    font-size: 0.9em;
+}
+
+.site-footer .copyright {
+    font-size: 0.8em;
+    opacity: 0.7; /* 目立たせすぎないように透明度を下げる */
+    margin-top: 15px;
+}
+
+/* =============================== */
+/* リストとリンクの調整 */
+/* =============================== */
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 8px;
+}
+
+.site-footer a {
+    color: #bdc3c7; /* リンクの色を少し明るく */
+    text-decoration: none;
+    transition: color 0.3s ease; /* ホバー時のアニメーション */
+}
+
+.site-footer a:hover {
+    color: #ffffff; /* ホバーで白く強調 */
+    text-decoration: underline;
+}
+
+/* =============================== */
+/* ソーシャルアイコン（例） */
+/* =============================== */
+.social-icons a {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-color: #34495e; /* アイコンの背景色 */
+    border-radius: 50%; /* 完全な円形 */
+    text-align: center;
+    line-height: 30px; /* アイコンを垂直中央に */
+    font-size: 16px;
+    color: #ecf0f1;
+}
+
+.social-icons a:hover {
+    background-color: #f1c40f; /* ホバーでアクセントカラーに */
+    color: #2c3e50;
 }
 
 @media screen and (max-width: 1023px) {
